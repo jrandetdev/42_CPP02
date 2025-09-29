@@ -1,5 +1,7 @@
 #include "Fixed.hpp"
 
+//construvtor
+
 Fixed::Fixed() : raw_value(0)
 {
 	std::cout << "Default constructor called" << std::endl;
@@ -12,7 +14,6 @@ Fixed::~Fixed()
 
 Fixed::Fixed(const int value)
 {
-	std::cout << "Int constructor called." << std::endl;
 	this->raw_value = (value << this->fractional_bits);
 }
 
@@ -38,16 +39,41 @@ Fixed::Fixed(const Fixed& other) : raw_value(other.raw_value)
 	std::cout << "Copy constructor called" << std::endl;
 }
 
-Fixed& Fixed::operator=(const Fixed& other) //returns a reference, a bit like the dereferenced pointed value
+Fixed	Fixed::operator=(const Fixed& other) //returns a reference, a bit like the dereferenced pointed value
 {
 	std::cout << "Copy assignment operator called" << std::endl;
-	raw_value = other.getRawBits();
+	this->raw_value = other.raw_value;
 	return (*this); // I want to return the actual variable referenced, not the address 
+}
+
+Fixed	Fixed::operator+(const Fixed& other)
+{
+	Fixed	result = (this->raw_value + other.raw_value);
+	return (result);
+}
+
+Fixed	Fixed::operator-(const Fixed& other)
+{
+	Fixed result = (this->raw_value - other.raw_value);
+	return (result);
+}
+
+Fixed	Fixed::operator*(const Fixed& other)
+{
+	Fixed result;
+	result.raw_value = (this->raw_value * other.raw_value) / (1 << this->fractional_bits);
+	return (result);
+}
+
+Fixed	Fixed::operator/(const Fixed& other)
+{
+	Fixed result;
+	result.raw_value = ((this->raw_value * (1 << this->fractional_bits)) / other.raw_value);
+	return (result);
 }
 
 std::ostream& operator<<(std::ostream& os, const Fixed& obj)
 {
-;
 	os << obj.toFloat(); //pushing something in a stream 
 	return (os);
 }
