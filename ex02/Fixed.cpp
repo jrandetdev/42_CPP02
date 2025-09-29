@@ -5,17 +5,17 @@
 //useful for intialisation
 Fixed::Fixed() : raw_value(0)
 {
-	std::cout << "Default constructor called" << std::endl;
+	//std::cout << "Default constructor called" << std::endl;
 }
 
 Fixed::~Fixed()
 {
-	std::cout << "Default destructor called" << std::endl;
+	//std::cout << "Default destructor called" << std::endl;
 }
 
 Fixed::Fixed(const Fixed& other) : raw_value(other.raw_value)
 {
-	std::cout << "Copy constructor called" << std::endl;
+	//std::cout << "Copy constructor called" << std::endl;
 }
 
 Fixed::Fixed(const int value)
@@ -34,7 +34,7 @@ Fixed::Fixed(const float value)
 //returns a reference, so return the dereference of this->
 Fixed& Fixed::operator=(const Fixed& other)
 {
-	std::cout << "Copy assignment operator called" << std::endl;
+	//std::cout << "Copy assignment operator called" << std::endl;
 	this->raw_value = other.raw_value;
 	return (*this);
 }
@@ -48,7 +48,7 @@ int Fixed::toInt(void) const
 
 float Fixed::toFloat(void) const
 {
-	return ((float)this->raw_value / (1 << this->fractional_bits));
+	return (((float)this->raw_value / (1 << this->fractional_bits)));
 }
 
 // ==================== ARITHMETIC OPERATORS ====================
@@ -101,32 +101,32 @@ Fixed Fixed::operator/(const Fixed& other)
 //refelction: when I send an operation if (x > y), it returns a boolean, true false.
 // so the operator overload need the boolean return type.
 
-bool Fixed::operator<(const Fixed& other)
+bool Fixed::operator<(const Fixed& other) const
 {
 	return (this->raw_value < other.raw_value);
 }
 
-bool Fixed::operator>(const Fixed&other)
+bool Fixed::operator>(const Fixed&other) const
 {
 	return (this->raw_value > other.raw_value);
 }
 
-bool Fixed::operator<=(const Fixed& other)
+bool Fixed::operator<=(const Fixed& other) const
 {
 	return (this->raw_value <= other.raw_value);
 }
 
-bool Fixed::operator>=(const Fixed& other)
+bool Fixed::operator>=(const Fixed& other) const
 {
 	return !(this->raw_value >= other.raw_value);
 }
 
-bool Fixed::operator==(const Fixed& other)
+bool Fixed::operator==(const Fixed& other) const
 {
 	return (this->raw_value == other.raw_value);
 }
 
-bool Fixed::operator!=(const Fixed& other)
+bool Fixed::operator!=(const Fixed& other) const
 {
 	return (this->raw_value != other.raw_value);
 }
@@ -143,7 +143,7 @@ bool Fixed::operator!=(const Fixed& other)
 Fixed& Fixed::operator++()
 {
 	//this->fractional bits is 8, so you get 256 by doing 1 << 8 :)
-	this->raw_value += (1 << this->fractional_bits);	//actual increment 
+	this->raw_value++;	//actual increment 
 	return (*this);										// return new value by reference
 }
 
@@ -161,7 +161,7 @@ Fixed Fixed::operator++(int)
 //pre decrement
 Fixed& Fixed::operator--()
 {
-	this->raw_value -= (1 << this->fractional_bits);
+	this->raw_value--;
 	return (*this);
 }
 
@@ -172,6 +172,37 @@ Fixed Fixed::operator--(int)
 	old_value = *this;
 	operator--();
 	return (old_value);
+}
+
+// ===================== MIN AND MAX =====================
+
+Fixed& Fixed::min(Fixed &x, Fixed& y)
+{
+	if (x < y)
+		return (x);
+	return (y);
+}
+
+//fixed the issue by making member function min a const 
+const Fixed& Fixed::min(const Fixed& x, const Fixed& y)
+{
+	if (x < y)
+		return (x);
+	return (y);
+}
+
+Fixed& Fixed::max(Fixed &x, Fixed &y)
+{
+	if (x > y)
+		return (x);
+	return (y);
+}
+
+const Fixed& Fixed::max(const Fixed &x, const Fixed& y)
+{
+	if (x > y)
+		return x;
+	return (y);
 }
 
 // ==================== I/O OPERATORS ====================
@@ -187,7 +218,7 @@ std::ostream& operator<<(std::ostream& os, const Fixed& obj)
 
 int Fixed::getRawBits(void) const
 {
-	std::cout << "getRawBits member function called" << std::endl;
+	//std::cout << "getRawBits member function called" << std::endl;
 	return (raw_value);
 }
 

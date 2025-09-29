@@ -27,25 +27,30 @@ class Fixed
 		Fixed	operator*(const Fixed& other);
 		Fixed	operator/(const Fixed& other);
 
-		bool Fixed::operator<(const Fixed& other);
-		bool Fixed::operator>(const Fixed&other);
-		bool Fixed::operator<=(const Fixed& other);
-		bool Fixed::operator>=(const Fixed& other);
-		bool Fixed::operator==(const Fixed& other);
-		bool Fixed::operator!=(const Fixed& other);
+		//the const at the end means you do not modify the object's data
+		bool operator<(const Fixed& other) const;
+		bool operator>(const Fixed&other) const;
+		bool operator<=(const Fixed& other) const;
+		bool operator>=(const Fixed& other) const;
+		bool operator==(const Fixed& other) const;
+		bool operator!=(const Fixed& other) const;
 
 		Fixed& operator++();
-		Fixed Fixed::operator++(int);
-		Fixed& Fixed::operator--();
-		Fixed Fixed::operator--(int);
-		
+		Fixed operator++(int);
+		Fixed& operator--();
+		Fixed operator--(int);
+
+		static Fixed& min(Fixed &x, Fixed& y);
+		static const Fixed& min(const Fixed& x, const Fixed& y);
+		static Fixed& max(Fixed &x, Fixed &y);
+		static const Fixed& max(const Fixed &x, const Fixed& y);
+
 		int		toInt(void) const;
 		float	toFloat(void) const;
 
 		int		getRawBits(void) const; // returns the raw value of the fixed point numnber
 		void	setRawBits(int const raw); //sets the raw value of the fixed point number
 	};
-
 	std::ostream& operator<<(std::ostream& os, const Fixed& obj);
 
 #endif
