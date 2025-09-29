@@ -19,12 +19,26 @@ class Fixed
 
 		Fixed(const Fixed& other); // this is a cpopy constructor
 		
-		Fixed	operator=(const Fixed& other); // this is a copy assignment operator
+		//copy assignment operator
+		Fixed&	operator=(const Fixed& other);
+
 		Fixed	operator+(const Fixed& other);
 		Fixed	operator-(const Fixed& other);
 		Fixed	operator*(const Fixed& other);
 		Fixed	operator/(const Fixed& other);
 
+		bool Fixed::operator<(const Fixed& other);
+		bool Fixed::operator>(const Fixed&other);
+		bool Fixed::operator<=(const Fixed& other);
+		bool Fixed::operator>=(const Fixed& other);
+		bool Fixed::operator==(const Fixed& other);
+		bool Fixed::operator!=(const Fixed& other);
+
+		Fixed& operator++();
+		Fixed Fixed::operator++(int);
+		Fixed& Fixed::operator--();
+		Fixed Fixed::operator--(int);
+		
 		int		toInt(void) const;
 		float	toFloat(void) const;
 
