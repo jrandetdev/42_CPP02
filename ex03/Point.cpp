@@ -2,9 +2,9 @@
 
 // ====================== CONST / DEST ==========================
 
-Point::Point() : x{}, y{}
+Point::Point() : x(0), y(0)
 {
-	std::cout << "Point: Default construtor called." << std::endl;
+	//std::cout << "Point: Default construtor called." << std::endl;
 }
 
 Point::Point(const float param_x, const float param_y) : x(param_x), y(param_y)
@@ -14,7 +14,7 @@ Point::Point(const float param_x, const float param_y) : x(param_x), y(param_y)
 
 Point::~Point()
 {
-	std::cout << "Point: Default destructor called." << std::endl;
+	//std::cout << "Point: Default destructor called." << std::endl;
 }
 
 // ==================== COPY CONSTRUCTOR ========================
@@ -28,6 +28,7 @@ Point::Point(const Point& other) : x(other.x), y(other.y) // these are const
 
 Point& Point::operator=(const Point& other)
 {
-	return ;
+	(void)other;
+	return (*this);
 }
 

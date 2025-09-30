@@ -57,13 +57,13 @@ float Fixed::toFloat(void) const
  * Addition: (5 × 256) + (3 × 256) = 256 × (5 + 3) = 256 × 8
  * Result is scaled once (correct fixed-point format)
  */
-Fixed Fixed::operator+(const Fixed& other)
+Fixed Fixed::operator+(const Fixed& other) const
 {
 	Fixed result;
 	result.raw_value = this->raw_value + other.raw_value;
 	return (result);
 }
-Fixed Fixed::operator-(const Fixed& other)
+Fixed Fixed::operator-(const Fixed& other) const
 {
 	Fixed result;
 	result.raw_value = this->raw_value - other.raw_value;
@@ -76,7 +76,7 @@ Fixed Fixed::operator-(const Fixed& other)
  * 
  * Else it would be multiplied by 256^2
  */
-Fixed Fixed::operator*(const Fixed& other)
+Fixed Fixed::operator*(const Fixed& other) const
 {
 	Fixed result;
 	result.raw_value = (this->raw_value * other.raw_value) >> this->fractional_bits;
@@ -89,7 +89,7 @@ Fixed Fixed::operator*(const Fixed& other)
  * 1. Maintain fixed-point scale in result
  * 2. Preserve precision (avoid integer truncation)
  */
-Fixed Fixed::operator/(const Fixed& other)
+Fixed Fixed::operator/(const Fixed& other) const
 {
 	Fixed result;
 	result.raw_value = (this->raw_value << this->fractional_bits) / other.raw_value;

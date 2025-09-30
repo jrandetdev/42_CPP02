@@ -4,19 +4,11 @@
 #include "Fixed.hpp"
 #include <cmath>
 
-typedef	struct s_vec
-{
-	Fixed const x;
-	Fixed const y;
-}	t_vec;
-
-
 class Point
 {
 	private:
 		Fixed const x;
 		Fixed const y;
-		t_vec vec;
 	public:
 		Point();
 		~Point();
@@ -26,7 +18,9 @@ class Point
 		Point(const Point& other);
 		//copy assignment operator
 		Point& operator=(const Point& other);
-		Fixed& cross_product(Point i, Point j, Point p);
+		// Fixed	getTriangleArea(const Point a, const Point b, const Point c);
+
+		static Fixed cross_product_sign(const Point& p1, const Point& p2, const Point& p3);
 };
 
 

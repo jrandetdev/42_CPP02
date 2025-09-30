@@ -1,21 +1,20 @@
 #include "Fixed.hpp"
+#include "Point.hpp"
 #include <iostream>
 
-int main()
+bool bsp( Point const a, Point const b, Point const c, Point const point);
+
+int main(void)
 {
-	//test A
-	{
-		Fixed a;
-		Fixed const b( Fixed( 5.05f ) * Fixed( 2 ) );
-		std::cout << a << std::endl;
-		std::cout << ++a << std::endl;
-		std::cout << a << std::endl;
-		std::cout << a++ << std::endl;
-		std::cout << a << std::endl;
-		std::cout << b << std::endl;
-		std::cout << Fixed::max( a, b ) << std::endl;
-		// if it was a non static member function, I would use
-		// a.max(a, b)
-	}
-	return 0;
+	Point a(4.4, 10.5);
+	Point b(1.4, 6.3);
+	Point c(7.5, 7.4);
+	Point p(4.34, 8.85);
+
+	
+	if (bsp(a, b, c, p))
+		std::cout << "point is inside the triangle" << std::endl;
+	else
+		std::cout << "point is outside the triangle" << std::endl;
+	return (0);
 }

@@ -23,10 +23,10 @@ class Fixed
 		//copy assignment operator
 		Fixed&	operator=(const Fixed& other);
 
-		Fixed	operator+(const Fixed& other);
-		Fixed	operator-(const Fixed& other);
-		Fixed	operator*(const Fixed& other);
-		Fixed	operator/(const Fixed& other);
+		Fixed	operator+(const Fixed& other) const;
+		Fixed	operator-(const Fixed& other) const;
+		Fixed	operator*(const Fixed& other) const;
+		Fixed	operator/(const Fixed& other) const;
 
 		//the const at the end means you do not modify the object's data
 		bool operator<(const Fixed& other) const; // je t garatie que l'instance de ma classe ne serra pas modifie (instance a gauche implicite de l'operateur)
