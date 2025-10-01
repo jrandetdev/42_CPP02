@@ -24,7 +24,7 @@ Point::Point(const Point& other) : x(other.x), y(other.y) // these are const
 	return;
 }
 
-// ==================== ASSIGNMENT OPERATOR ====================
+// ==================== ASSIGNMENT OPERATOR =====================
 
 Point& Point::operator=(const Point& other)
 {

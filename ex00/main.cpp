@@ -29,7 +29,7 @@
  */
 int main()
 {
-	//testa A
+	std::cout << "test A" << std::endl;
 	{
 		Fixed a;
 		Fixed b( a );
@@ -38,9 +38,8 @@ int main()
 		std::cout << a.getRawBits() << std::endl;
 		std::cout << b.getRawBits() << std::endl;
 		std::cout << c.getRawBits() << std::endl;
-		return 0;
 	}
-	//test B
+	std::cout << "\ntest B" << std::endl;
 	{
 		Fixed a;
 

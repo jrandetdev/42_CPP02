@@ -22,6 +22,7 @@ Fixed::Fixed(const Fixed& other) : raw_value(other.raw_value)
  */
 Fixed::Fixed(const int value)
 {
+	std::cout << "Int constructor called" << '\n';
 	this->raw_value = (value << this->fractional_bits);
 }
 
@@ -30,6 +31,7 @@ Fixed::Fixed(const int value)
  */
 Fixed::Fixed(const float value)
 {
+	std::cout << "Float constructor called" << '\n';
 	// Round to preserve precision when converting to int
 	this->raw_value = round(value * (1 << this->fractional_bits)); //round is used to keep the precision which is lost when putting it in an int
 }
@@ -75,7 +77,6 @@ std::ostream& operator<<(std::ostream& os, const Fixed& obj)
 
 int Fixed::getRawBits(void) const
 {
-	std::cout << "getRawBits member function called" << std::endl;
 	return (raw_value);
 }
 

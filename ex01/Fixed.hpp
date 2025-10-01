@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <string>
+#include <cmath>
 //all const member members must be initialised at the time of creation
 
 class Fixed
