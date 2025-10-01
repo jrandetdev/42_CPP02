@@ -19,7 +19,8 @@ class Point
 		//copy assignment operator
 		Point& operator=(const Point& other);
 		// Fixed	getTriangleArea(const Point a, const Point b, const Point c);
-
+		static Fixed triangle_area(const Point& p1, const Point& p2, const Point& p3);
+		static bool	is_on_line(const Point& a, const Point& b, const Point& c, const Point& point);
 		static Fixed cross_product_sign(const Point& p1, const Point& p2, const Point& p3);
 };
 
